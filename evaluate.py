@@ -25,4 +25,5 @@ if __name__ == "__main__":
     results = model.evaluate(data, isFace) #get loss and accuracy over data
 
     #for current model, accuracy is 99.1% and loss is 0.0933 on test_batch_0
+    #    vs the 99.81% accuracy and 0.0323 loss on train_batch_0
     
