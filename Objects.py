@@ -14,6 +14,7 @@ def Pull(purpose="Development", count=250):
 
     imageNet = np.load("./ImageNet/train_data_batch_1.npz", mmap_mode="r") #ImageNet 64x64 Train part 1 batch 1
     data = imageNet["data"][0:count].reshape((-1,64,64,3), order = 'F')
+    data = np.rot90(data, k=-1, axes=(1,2)) # rotate clockwise 90 deg to correct reordering
     isFace = np.zeros(count).astype("uint8")
     labels = imageNet["labels"][:count]
     
