@@ -8,7 +8,7 @@ def CreateLayers(numConv=3, activation='relu', finalLayer=None):
     layers.append(tf.keras.Input(shape=(64,64,3)))
     for index in range(numConv):
         layers.append(
-            tf.keras.layers.Conv2D(filters=16*0.5**index, kernel_size=(3,3),
+            tf.keras.layers.Conv2D(filters=16*0.5**index, kernel_size=(3,3), use_bias=False,
             strides=(2,2), padding="valid", activation=activation)(layers[-1])
         )
     if finalLayer != None:
@@ -42,10 +42,12 @@ if __name__ == "__main__":
     plt.title("Model Loss")
     plt.xlabel("epochs")
     plt.ylabel("Binary Crossentropy")
+    plt.savefig("Model Loss.png")
     plt.show()
 
     plt.plot(history.history["accuracy"])
     plt.title("Model accuracy")
     plt.xlabel("epochs")
     plt.ylabel("Percent correct")
+    plt.savefig("Model Accuracy.png")
     plt.show()
